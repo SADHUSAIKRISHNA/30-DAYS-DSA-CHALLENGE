@@ -1,0 +1,21 @@
+def isBadVersion(version):
+    return version >= 4 
+
+class Solution(object):
+    def firstBadVersion(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        left, right = 1, n
+
+        while left < right:
+            mid = (left + right) // 2
+            if isBadVersion(mid):
+                right = mid
+            else:
+                left = mid + 1
+        return left
+
+sol = Solution()
+print(sol.firstBadVersion(5))  # Output: 4
